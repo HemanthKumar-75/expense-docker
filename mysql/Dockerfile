@@ -5,5 +5,7 @@ ADD scripts/*.sql /docker-entrypoint-initdb.d
 # RUN useradd -m expense
 RUN groupadd -f expense && \
     useradd -g expense expense && \
-    chown -R expense:expense /var/lib/mysql /var/run/mysqld /docker-entrypoint-initdb.d
+    chown -R mysql:mysql /var/lib/mysql /var/run/mysqld /docker-entrypoint-initdb.d && \
+    chown -R expense:expense /docker-entrypoint-initdb.d
+    # chown -R expense:expense /var/lib/mysql /var/run/mysqld /docker-entrypoint-initdb.d
 USER expense
